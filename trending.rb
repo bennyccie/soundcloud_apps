@@ -31,7 +31,8 @@ genres = %W(
 	electronic
 	deephouse
 	danceedm
-	)
+)
+
 track_list = "new_tracks.html"
 f = File.open(track_list,"w")
 f.write("Last Updated: #{Date.today}")
@@ -53,7 +54,6 @@ genres.each {|genre|
 			url = track_hash['permalink_url']
 			genre_tag = track_hash['genre']
 			tracks_array << %Q(<a href="#{url}">#{title}</a> (tag: #{genre_tag}))
-
 		end
 	}
 	tracks_array.uniq!
