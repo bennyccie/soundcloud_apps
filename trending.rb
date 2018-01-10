@@ -5,12 +5,18 @@ require 'date'
 
 client_id = ''
 
-begin
-	File.open("client_id") do |f|
-		client_id = f.readline.chomp
+if File.exist?("client_id")
+	begin
+		File.open("client_id") do |f|
+			client_id = f.readline.chomp
+		end
+	rescue Exception => e
+		puts "ERROR: #{e.message}"
+		exit(1)
 	end
-rescue Exception => e
-	puts "ERROR: #{e.message}"
+else
+	puts "ERROR: client_id file missing"
+	exit(1)
 end
 
 limit = 20
@@ -25,7 +31,7 @@ genres = %W(
 	electronic
 	deephouse
 	danceedm
-)
+	)
 track_list = "new_tracks.html"
 f = File.open(track_list,"w")
 f.write("Last Updated: #{Date.today}")
