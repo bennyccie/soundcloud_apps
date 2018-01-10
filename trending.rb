@@ -18,7 +18,7 @@ genres = %W(
 	danceedm
 )
 if client_id.nil?
-	puts "fail"
+	puts "ERROR: You must export SOUNDCLOUD_CLIENT_ID in your environment"
 	exit(1)
 else
 	track_list = "/tmp/tracks.html"
@@ -29,9 +29,10 @@ else
 		f.write("<ul>")
 		tracks_array = []
 		puts "Getting newest #{limit} tracks of genre: #{genre}"
-		tracks_json = %x(curl -s "https://api-v2.soundcloud.com/charts?kind=trending&genre=soundcloud%3Agenres%3A#{genre}&client_id=#{client_id}&limit=#{limit}&offset=0" | jq '.collection')
+		tracks_json = %x(curl -s "https://api-v2.soundcloud.com/charts?kind=trending&genre=soundcloud%3Agenres%3A#{genre}&client_id=#{client_id}&limit=#{limit}&offset=0")
 		tracks = JSON.parse(tracks_json)
-		tracks.each {|track|
+		collection = tracks['collection']
+		collection.each {|track|
 			track_hash = track['track']
 			date = track_hash['created_at']
 			a_week_ago = (Date.today - 7)
