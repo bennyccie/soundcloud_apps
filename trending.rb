@@ -3,21 +3,9 @@
 require 'json'
 require 'date'
 
-client_id = ''
-
-if File.exist?("client_id")
-	begin
-		File.open("client_id") do |f|
-			client_id = f.readline.chomp
-		end
-	rescue Exception => e
-		puts "ERROR: #{e.message}"
-		exit(1)
-	end
-else
-	puts "ERROR: client_id file missing"
-	exit(1)
-end
+# Discovered a weird bug where the first track in the collection is missing regardless of selected genre.
+# Found that using the hardcoded client ID below works around this bug and returns all tracks.
+client_id = 'gVy1yFxsfepalK973KYFRRz0Dn0ySSQ3'
 
 limit = 20
 
