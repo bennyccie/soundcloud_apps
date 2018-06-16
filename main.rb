@@ -4,7 +4,7 @@ require 'optparse'
 require_relative 'authenticate.rb'
 client = authenticate()
 me_hash = {}
-page_size = 100 # reference: https://developers.soundcloud.com/docs#errors
+page_size = 250 # reference: https://developers.soundcloud.com/docs#errors
 sc_users = []
 options = {}
 optparse = OptionParser.new do |opts|
