@@ -8,7 +8,7 @@ require 'date'
 # Others on Stackoverflow also report similar issues where certain client IDs are blocked from making API calls to tracks owned by Universal Music Group (UMG) artists.
 # References: https://stackoverflow.com/questions/36240582/soundcloud-api-only-returning-two-results/36367024 and https://stackoverflow.com/questions/37477095/soundcloud-api-returns-0-tracks-for-user
 
-client_id = 'gVy1yFxsfepalK973KYFRRz0Dn0ySSQ3'
+client_id = 'abcdefghijklmop123456'
 
 limit = 20
 
